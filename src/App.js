@@ -2,27 +2,30 @@ import React, { Component } from "react";
 import AppStyle from "./App.module.css";
 
 export default class App extends Component {
-  todoData = [
-    {
-      id: "001",
-      title: "공부하기",
-      completed: true,
-    },
-    {
-      id: "002",
-      title: "청소하기",
-      completed: false,
-    },
-    {
-      id: "003",
-      title: "코딩하기",
-      completed: true,
-    },
-  ];
+  state = {
+    todoData: [
+      {
+        id: "001",
+        title: "공부하기",
+        completed: true,
+      },
+      {
+        id: "002",
+        title: "청소하기",
+        completed: false,
+      },
+      {
+        id: "003",
+        title: "코딩하기",
+        completed: true,
+      },
+    ],
+    value: "",
+  };
 
   handleClick = (id) => {
-    let newTodoData = this.todoData.filter((data) => data.id !== id);
-    console.log(newTodoData);
+    let newTodoData = this.state.todoData.filter((data) => data.id !== id);
+    super.setState((cur) => (cur.todoData = newTodoData));
   };
 
   render = () => {
@@ -33,16 +36,17 @@ export default class App extends Component {
             <h1>할 일 목록</h1>
           </div>
 
-          {this.todoData.map((data) => {
+          {this.state.todoData.map((data) => {
             const completed = data.completed ? true : false;
+            const dataId = data.id;
 
             return (
-              <div className={AppStyle.todoObject} key={data.id}>
+              <div className={AppStyle.todoObject} key={dataId}>
                 <input type={"checkbox"} defaultChecked={completed} />
                 {data.title}
                 <button
                   className={AppStyle.btnStyle}
-                  onClick={() => this.handleClick(data.id)}
+                  onClick={() => this.handleClick(dataId)}
                 >
                   X
                 </button>
