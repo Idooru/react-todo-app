@@ -4,21 +4,26 @@ import AppStyle from "./App.module.css";
 export default class App extends Component {
   todoData = [
     {
-      id: "1",
+      id: "001",
       title: "공부하기",
       completed: true,
     },
     {
-      id: "2",
+      id: "002",
       title: "청소하기",
       completed: false,
     },
     {
-      id: "3",
+      id: "003",
       title: "코딩하기",
       completed: true,
     },
   ];
+
+  handleClick = (id) => {
+    let newTodoData = this.todoData.filter((data) => data.id !== id);
+    console.log(newTodoData);
+  };
 
   render = () => {
     return (
@@ -29,15 +34,18 @@ export default class App extends Component {
           </div>
 
           {this.todoData.map((data) => {
-            let completed = false;
-
-            completed = data.completed ? true : completed;
+            const completed = data.completed ? true : false;
 
             return (
               <div className={AppStyle.todoObject} key={data.id}>
                 <input type={"checkbox"} defaultChecked={completed} />
                 {data.title}
-                <button className={AppStyle.btnStyle}>X</button>
+                <button
+                  className={AppStyle.btnStyle}
+                  onClick={() => this.handleClick(data.id)}
+                >
+                  X
+                </button>
               </div>
             );
           })}
