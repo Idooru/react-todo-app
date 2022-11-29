@@ -19,3 +19,15 @@
   cursor: pointer;
   float: right;
 }
+
+.todoObject {
+  padding: 10px;
+  border-bottom: 1px #ccc dotted;
+  padding-bottom: 12px;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.todoObject > input {
+  margin-right: 15px;
+}
