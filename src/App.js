@@ -3,29 +3,35 @@ import AppStyle from "./App.module.css";
 
 export default class App extends Component {
   state = {
-    todoData: [
-      {
-        id: "001",
-        title: "공부하기",
-        completed: true,
-      },
-      {
-        id: "002",
-        title: "청소하기",
-        completed: false,
-      },
-      {
-        id: "003",
-        title: "코딩하기",
-        completed: true,
-      },
-    ],
+    todoData: [],
     value: "",
   };
 
   handleClick = (id) => {
     let newTodoData = this.state.todoData.filter((data) => data.id !== id);
     super.setState((cur) => (cur.todoData = newTodoData));
+  };
+
+  handleChange = (event) => {
+    super.setState((cur) => (cur.value = event.target.value));
+  };
+
+  handleSubmit = (event) => {
+    if (!this.state.value) {
+      return alert("최소 한글자 이상 입력해주세요!");
+    }
+
+    event.preventDefault();
+
+    const newTodo = {
+      id: Date.now(),
+      title: this.state.value,
+      completed: false,
+    };
+
+    super.setState({
+      todoData: [...this.state.todoData, newTodo],
+    });
   };
 
   render = () => {
@@ -53,6 +59,24 @@ export default class App extends Component {
               </div>
             );
           })}
+
+          <form style={{ display: "flex" }} onSubmit={this.handleSubmit}>
+            <input
+              onChange={this.handleChange}
+              type="text"
+              name="value"
+              style={{ flex: "10", padding: "5px" }}
+              placeholder="해야 할 일을 입력하세요."
+              autoComplete="off"
+              value={this.state.value}
+            />
+            <input
+              type="submit"
+              value="입력"
+              className="btn"
+              style={{ flex: 1 }}
+            />
+          </form>
         </div>
       </div>
     );
