@@ -24,14 +24,24 @@
   float: right;
 }
 
-.todoObject {
+.todoUndone {
   padding: 10px;
   border-bottom: 1px #ccc dotted;
-  padding-bottom: 12px;
   text-decoration: none;
-  margin-bottom: 10px;
 }
 
-.todoObject > input {
-  margin-right: 15px;
+.todoDone {
+  padding: 10px;
+  border-bottom: 1px #ccc dotted;
+  text-decoration: line-through;
+}
+
+.todoUndone > input,
+.todoDone > input {
+  margin-right: 20px;
+}
+
+.inputField {
+  display: flex;
+  margin-top: 20px;
 }

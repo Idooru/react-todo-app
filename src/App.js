@@ -31,7 +31,19 @@ export default class App extends Component {
 
     super.setState({
       todoData: [...this.state.todoData, newTodo],
+      value: "",
     });
+  };
+
+  handleCompleteChange = (id) => {
+    const newTodoData = this.state.todoData.map((data) => {
+      if (data.id === id) {
+        data.completed = !data.completed;
+      }
+      return data;
+    });
+
+    super.setState({ todoData: newTodoData });
   };
 
   render = () => {
@@ -43,12 +55,19 @@ export default class App extends Component {
           </div>
 
           {this.state.todoData.map((data) => {
-            const completed = data.completed ? true : false;
+            const completed = data.completed;
             const dataId = data.id;
 
             return (
-              <div className={AppStyle.todoObject} key={dataId}>
-                <input type={"checkbox"} defaultChecked={completed} />
+              <div
+                className={completed ? AppStyle.todoDone : AppStyle.todoUndone}
+                key={dataId}
+              >
+                <input
+                  type="checkbox"
+                  onChange={() => this.handleCompleteChange(dataId)}
+                  defaultChecked={completed}
+                />
                 {data.title}
                 <button
                   className={AppStyle.btnStyle}
@@ -60,7 +79,7 @@ export default class App extends Component {
             );
           })}
 
-          <form style={{ display: "flex" }} onSubmit={this.handleSubmit}>
+          <form className={AppStyle.inputField} onSubmit={this.handleSubmit}>
             <input
               onChange={this.handleChange}
               type="text"
