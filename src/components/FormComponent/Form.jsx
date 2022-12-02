@@ -1,5 +1,4 @@
 import React from "react";
-import FormStyle from "./Form.module.css";
 
 export default function Form({ handleSubmit, value, setValue }) {
   const handleChange = (event) => {
@@ -8,9 +7,9 @@ export default function Form({ handleSubmit, value, setValue }) {
 
   return (
     <div>
-      <form className={FormStyle.inputForm} onSubmit={handleSubmit}>
+      <form className="flex pt-2" onSubmit={handleSubmit}>
         <input
-          className={FormStyle.inputArea}
+          className="w-full px-3 py-2 mr-4 text-gray-500 border rounded shadow outline-none"
           onChange={handleChange}
           type="text"
           name="value"
@@ -19,7 +18,7 @@ export default function Form({ handleSubmit, value, setValue }) {
           value={value}
         />
         <input
-          className={FormStyle.inputBtn}
+          className="p-2 text-blue-400 border-2 border-blue-400 rounded hover:text-white hover:bg-blue-200 cursor-pointer"
           type="submit"
           value="입력"
           style={{ flex: 1 }}
@@ -28,3 +27,4 @@ export default function Form({ handleSubmit, value, setValue }) {
     </div>
   );
 }
+// className={FormStyle.inputForm}

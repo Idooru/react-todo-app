@@ -25,22 +25,27 @@ export default function List({ todoData, setTodoData }) {
         const dataId = data.id;
 
         return (
-          <div
-            className={completed ? ListStyle.todoDone : ListStyle.todoUndone}
-            key={dataId}
-          >
-            <input
-              type="checkbox"
-              onChange={() => handleCompleteChange(dataId)}
-              defaultChecked={false}
-            />
-            {data.title}
-            <button
-              className={ListStyle.removeBtn}
-              onClick={() => handleClickToRemove(dataId)}
-            >
-              X
-            </button>
+          <div key={dataId}>
+            <div className="flex items-center justify-between w-full px-4 my-2 text-gray-600 bg-gray-100 border rounded ">
+              <div className="items-center">
+                <input
+                  type="checkbox"
+                  onChange={() => handleCompleteChange(dataId)}
+                  defaultChecked={completed}
+                />{" "}
+                <span className={completed ? "line-through" : undefined}>
+                  {data.title}
+                </span>
+              </div>
+              <div className="items-center">
+                <button
+                  className="px-4 py-2 float-right"
+                  onClick={() => handleClickToRemove(dataId)}
+                >
+                  X
+                </button>
+              </div>
+            </div>
           </div>
         );
       })}
