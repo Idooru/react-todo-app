@@ -11,36 +11,6 @@
   box-shadow: -9px 17px 13px rgba(46, 46, 46, 0.16);
 }
 
-.removeBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: crimson;
-  color: #fff;
-  border: none;
-  padding: 5px 9px;
-  border-radius: 50%;
-  cursor: pointer;
-  float: right;
-}
-
-.todoUndone {
-  padding: 10px;
-  border-bottom: 1px #ccc dotted;
-  text-decoration: none;
-}
-
-.todoDone {
-  padding: 10px;
-  border-bottom: 1px #ccc dotted;
-  text-decoration: line-through;
-}
-
-.todoUndone > input,
-.todoDone > input {
-  margin-right: 20px;
-}
-
 .inputForm {
   display: flex;
   margin-top: 40px;

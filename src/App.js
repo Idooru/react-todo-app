@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import AppStyle from "./App.module.css";
+import List from "./components/List";
 
 export default function App() {
   const [todoData, setTodoData] = useState([]);
   const [value, setValue] = useState("");
-
-  const handleClickToRemove = (id) => {
-    const newTodoData = todoData.filter((data) => data.id !== id);
-    setTodoData(newTodoData);
-  };
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -35,17 +31,6 @@ export default function App() {
     setValue("");
   };
 
-  const handleCompleteChange = (id) => {
-    const newTodoData = todoData.map((data) => {
-      if (data.id === id) {
-        data.completed = !data.completed;
-      }
-      return data;
-    });
-
-    setTodoData(() => newTodoData);
-  };
-
   return (
     <div className={AppStyle.container}>
       <div className={AppStyle.todoBlock}>
@@ -53,30 +38,7 @@ export default function App() {
           <h1>할 일 목록</h1>
         </div>
 
-        {todoData.map((data) => {
-          const completed = data.completed;
-          const dataId = data.id;
-
-          return (
-            <div
-              className={completed ? AppStyle.todoDone : AppStyle.todoUndone}
-              key={dataId}
-            >
-              <input
-                type="checkbox"
-                onChange={() => handleCompleteChange(dataId)}
-                defaultChecked={completed}
-              />
-              {data.title}
-              <button
-                className={AppStyle.removeBtn}
-                onClick={() => handleClickToRemove(dataId)}
-              >
-                X
-              </button>
-            </div>
-          );
-        })}
+        <List todoData={todoData} setTodoData={setTodoData} />
 
         <form className={AppStyle.inputForm} onSubmit={handleSubmit}>
           <input
