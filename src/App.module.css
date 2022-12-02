@@ -10,28 +10,3 @@
   border-radius: 10px;
   box-shadow: -9px 17px 13px rgba(46, 46, 46, 0.16);
 }
-
-.inputForm {
-  display: flex;
-  margin-top: 40px;
-}
-
-.inputArea {
-  border: 2px solid rgb(107, 107, 107);
-  border-radius: 6px;
-  flex: 10;
-  padding-left: 10px;
-}
-
-.inputArea:focus {
-  outline: none;
-}
-
-.inputBtn {
-  height: 41px;
-  margin-left: 20px;
-  cursor: pointer;
-  border-radius: 6px;
-  border: none;
-  background-color: rgb(70, 140, 206);
-}

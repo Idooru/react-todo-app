@@ -11,9 +11,8 @@
 }
 
 .removeBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 25px;
+  height: 25px;
   background-color: crimson;
   color: #fff;
   border: none;
@@ -21,6 +20,7 @@
   border-radius: 50%;
   cursor: pointer;
   float: right;
+  font-size: 8px;
 }
 
 .todoUndone > input,

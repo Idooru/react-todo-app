@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import AppStyle from "./App.module.css";
-import List from "./components/List";
+import List from "./components/ListComponent/List";
+import Form from "./components/FormComponent/Form";
 
 export default function App() {
   const [todoData, setTodoData] = useState([]);
   const [value, setValue] = useState("");
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
 
   const handleSubmit = (event) => {
     if (!value) {
@@ -39,24 +36,12 @@ export default function App() {
         </div>
 
         <List todoData={todoData} setTodoData={setTodoData} />
-
-        <form className={AppStyle.inputForm} onSubmit={handleSubmit}>
-          <input
-            className={AppStyle.inputArea}
-            onChange={handleChange}
-            type="text"
-            name="value"
-            placeholder="해야 할 일을 입력하세요."
-            autoComplete="off"
-            value={value}
-          />
-          <input
-            className={AppStyle.inputBtn}
-            type="submit"
-            value="입력"
-            style={{ flex: 1 }}
-          />
-        </form>
+        <Form
+          handleSubmit={handleSubmit}
+          setTodoData={setTodoData}
+          value={value}
+          setValue={setValue}
+        />
       </div>
     </div>
   );
