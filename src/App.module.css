@@ -11,7 +11,7 @@
   box-shadow: -9px 17px 13px rgba(46, 46, 46, 0.16);
 }
 
-.btnStyle {
+.removeBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +41,27 @@
   margin-right: 20px;
 }
 
-.inputField {
+.inputForm {
   display: flex;
-  margin-top: 20px;
+  margin-top: 40px;
+}
+
+.inputArea {
+  border: 2px solid rgb(107, 107, 107);
+  border-radius: 6px;
+  flex: 10;
+  padding-left: 10px;
+}
+
+.inputArea:focus {
+  outline: none;
+}
+
+.inputBtn {
+  height: 41px;
+  margin-left: 20px;
+  cursor: pointer;
+  border-radius: 6px;
+  border: none;
+  background-color: rgb(70, 140, 206);
 }
