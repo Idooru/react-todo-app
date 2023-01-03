@@ -24,7 +24,6 @@ const Lists = React.memo(({ todoData, setTodoData, handleClickToRemove }) => {
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef}>
               {todoData.map((data, index) => {
-                console.log(data.id.toString);
                 return (
                   <Draggable
                     key={data.id}
