@@ -16,17 +16,22 @@ export default function Box() {
   );
 
   const handleSubmit = (event) => {
+    event.preventDefault();
+
     if (!value || value.length > 16) {
       return alert("최소 한글자 이상 최대 16글자 이하로 입력해주세요!");
     }
-
-    event.preventDefault();
 
     const newTodo = {
       id: Date.now(),
       title: value,
       completed: false,
     };
+
+    if (todoData.length >= 7) {
+      alert("더 이상 할 일 목록을 추가할 수 없습니다.");
+      return setValue("");
+    }
 
     setTodoData([...todoData, newTodo]);
     setValue("");
