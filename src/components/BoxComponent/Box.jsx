@@ -4,13 +4,18 @@ import Form from "../FormComponent/Form";
 import BoxStyle from "./Box.module.css";
 
 export default function Box() {
-  const [todoData, setTodoData] = useState([]);
+  const initialTodoData = localStorage.getItem("todoData")
+    ? JSON.parse(localStorage.getItem("todoData"))
+    : [];
+
+  const [todoData, setTodoData] = useState(initialTodoData);
   const [value, setValue] = useState("");
 
   const handleClickToRemove = useCallback(
     (id) => {
       const newTodoData = todoData.filter((data) => data.id !== id);
       setTodoData(newTodoData);
+      localStorage.setItem("todoData", JSON.stringify(newTodoData));
     },
     [todoData]
   );
@@ -34,11 +39,14 @@ export default function Box() {
     }
 
     setTodoData([...todoData, newTodo]);
+    localStorage.setItem("todoData", JSON.stringify([...todoData, newTodo]));
+
     setValue("");
   };
 
   const handleDeleteAll = () => {
     setTodoData([]);
+    localStorage.setItem("todoData", JSON.stringify([]));
   };
 
   return (

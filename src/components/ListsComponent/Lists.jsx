@@ -14,6 +14,7 @@ const Lists = React.memo(({ todoData, setTodoData, handleClickToRemove }) => {
     // 원하는 자리에 reorderItem을 insert 해줍니다.
     newTodoData.splice(result.destination.index, 0, reorderedItem);
     setTodoData(newTodoData);
+    localStorage.setItem("todoData", newTodoData);
   };
 
   return (
@@ -23,6 +24,7 @@ const Lists = React.memo(({ todoData, setTodoData, handleClickToRemove }) => {
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef}>
               {todoData.map((data, index) => {
+                console.log(data.id.toString);
                 return (
                   <Draggable
                     key={data.id}
