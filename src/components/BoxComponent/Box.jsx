@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import Lists from "../ListsComponent/Lists";
 import Form from "../FormComponent/Form";
 
@@ -6,6 +6,14 @@ export default function Box() {
   console.log("Box Component");
   const [todoData, setTodoData] = useState([]);
   const [value, setValue] = useState("");
+
+  const handleClickToRemove = useCallback(
+    (id) => {
+      const newTodoData = todoData.filter((data) => data.id !== id);
+      setTodoData(newTodoData);
+    },
+    [todoData]
+  );
 
   const handleSubmit = (event) => {
     if (!value || value.length > 16) {
@@ -30,7 +38,11 @@ export default function Box() {
         <div className="flex justify-between mb-3">
           <h1>할 일 목록</h1>
         </div>
-        <Lists todoData={todoData} setTodoData={setTodoData} />
+        <Lists
+          todoData={todoData}
+          setTodoData={setTodoData}
+          handleClickToRemove={handleClickToRemove}
+        />
         <Form
           handleSubmit={handleSubmit}
           setTodoData={setTodoData}
