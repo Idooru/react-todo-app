@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import Lists from "../ListsComponent/Lists";
 import Form from "../FormComponent/Form";
+import BoxStyle from "./Box.module.css";
 
 export default function Box() {
   console.log("Box Component");
@@ -32,10 +33,18 @@ export default function Box() {
     setValue("");
   };
 
+  const handleDeleteAll = (e) => {
+    console.log(e);
+    setTodoData([]);
+  };
+
   return (
     <div className="w-full p-6 m-4 bg-white rounded shadow lg:w-3/4 lg:max-w-lg">
       <div className="flex justify-between mb-3">
         <h1>할 일 목록</h1>
+        <button className={BoxStyle.DeleteAllButton} onClick={handleDeleteAll}>
+          Delete All
+        </button>
       </div>
       <Lists
         todoData={todoData}

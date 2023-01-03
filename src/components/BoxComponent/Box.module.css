@@ -1,0 +1,8 @@
+.DeleteAllButton {
+  color: whitesmoke;
+  font-size: 10px;
+  background-color: rgb(182, 37, 37);
+  padding-left: 4px;
+  padding-right: 4px;
+  border-radius: 5px;
+}
