@@ -3,6 +3,7 @@ import Lists from "../ListsComponent/Lists";
 import Form from "../FormComponent/Form";
 
 export default function Box() {
+  console.log("Box Component");
   const [todoData, setTodoData] = useState([]);
   const [value, setValue] = useState("");
 
