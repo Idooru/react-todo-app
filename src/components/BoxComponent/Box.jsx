@@ -4,7 +4,6 @@ import Form from "../FormComponent/Form";
 import BoxStyle from "./Box.module.css";
 
 export default function Box() {
-  console.log("Box Component");
   const [todoData, setTodoData] = useState([]);
   const [value, setValue] = useState("");
 
@@ -33,8 +32,7 @@ export default function Box() {
     setValue("");
   };
 
-  const handleDeleteAll = (e) => {
-    console.log(e);
+  const handleDeleteAll = () => {
     setTodoData([]);
   };
 
